@@ -1,11 +1,8 @@
 import axios from "axios";
 import Head from "next/head";
 import { useState, useEffect, ChangeEvent, KeyboardEvent } from "react";
-// import styled from "styled-components";
 import * as S from "../../styles/Main.styles";
 import moment from "moment";
-// import { css } from "@emotion/react";
-// import styled from "@emotion/styled";
 interface Coordinates {
   latitude: number;
   longitude: number;
@@ -13,19 +10,13 @@ interface Coordinates {
 const weatherAPiKey = process.env.NEXT_PUBLIC_WEATHER_APP;
 const weatherAPiKeyLatLon = process.env.NEXT_PUBLIC_WEATHER_Lat_Lon;
 export default function WeatherApp() {
-  // const [currentDay, setCurrentDay] = useState("");
-  // const [location, setLocation] = useState("toronto");
-  // const [currentTemp, setCurrentTemp] = useState<number>();
   const [currentCity, setCurrentCity] = useState();
   const [currentCountry, setCurrentCountry] = useState();
-  // const [currentMonth, setCurrentMonth] = useState();
-  // const [currentTh, setCurrentTh] = useState<string>();
   const [weather, setWeather] = useState("");
   const [locationInput, setLocationInput] = useState("");
   const [result, setResult] = useState<any>();
 
   const url = `https://api.openweathermap.org/data/2.5/forecast?q=${locationInput}&appid=${weatherAPiKey}`;
-  // const [userAddress, setUserAddress] = useState(null);
   const [currentWeather, setCurrentWeather] = useState<any>();
 
   const weatherMainList = [
@@ -99,9 +90,6 @@ export default function WeatherApp() {
         setWeather(data2.data?.weather[0]?.main);
         // console.log("weather is res.data?.weather[0]?.main22");
       }
-      // setWeather(data2.data?.weather[0]?.main);
-      // console.log(`weather: ${data2.data?.weather[0]?.main}`);
-      // console.log(weather, data2.data?.weather[0]?.main);
     } catch (err) {
       alert(err);
     }
@@ -158,23 +146,9 @@ export default function WeatherApp() {
       return "afternoon";
     }
   };
-  // const currentHour = Number(new Date(currentWeather?.dt * 1000).getHours());
-  // const currentHour = moment.unix(currentWeather?.dt).hours();
   const partOfDay = getPartOfDay(Number(formattedHour[0]), ampm[1]);
   // const [weather, setWeather] = useState(currentWeather?.weather[0]?.main);
   const currentWeatherDate = moment(currentWeather?.dt * 1000);
-  // console.log(
-  //   partOfDay,
-  //   currentWeather?.weather[0]?.main,
-  //   !weatherMainList.includes(currentWeather?.weather[0]?.main)
-  // );
-
-  // useEffect(() => {
-  //   if (!weatherMainList.includes(weather)) {
-  //     setWeather("Clear");
-  //   }
-  //   console.log(!weatherMainList.includes(weather), weather);
-  // }, [currentWeather, currentCity]);
 
   return (
     <>
@@ -191,9 +165,6 @@ export default function WeatherApp() {
         <link rel='icon' href='/logo2.png' />
       </Head>
       <S.Wrapper partOfDay={partOfDay} weather={weather || "Clear"}>
-        {/* <p> {new Date(currentWeather?.dt * 1000).getHours()}</p>
-      {partOfDay ? <p>{partOfDay}</p> : null} 
-      {currentWeather?.weather[0]?.main}*/}
         <S.WrapperContent>
           {currentWeather && (
             <S.CurrentWeather>
@@ -203,27 +174,18 @@ export default function WeatherApp() {
                   {Math.round((currentWeather?.main?.temp - 273.15) * 10) / 10}
                   {/* {currentTemp} */}
                   <span> °C</span>
-                  {/* morning,dawn,afternoon, night */}
-                  {/* <span>{partOfDay}</span> */}
                 </S.CurrentWeatherH1>
                 <S.CurrentWeatherH2>
                   <span>{currentWeather?.name},</span>
-
-                  {/* <span>{currentCity}</span> */}
-                  {/* <span>{currentCountry}</span> */}
                   <span>{currentWeather?.sys?.country}</span>
                 </S.CurrentWeatherH2>
 
                 <S.CurrentWeatherP>
                   <span>
-                    {/* {weekday[new Date(currentWeather?.dt * 1000).getDay()]}, */}
                     {currentWeatherDate.format("dddd")}, &nbsp;
                     {/* {currentWeather?.dt} */}
                   </span>
                   <span>
-                    {/* {getDayWithOrdinal(
-                      new Date(currentWeather?.dt * 1000).getDate()
-                    )} */}
                     {currentWeatherDate.format("Do")}, &nbsp;
                   </span>
                   <span>
@@ -259,22 +221,12 @@ export default function WeatherApp() {
                 <S.ForecastToday>
                   {result?.list?.slice(0, 4).map((el: any, i: number) => (
                     <S.TodayIcon key={i}>
-                      {/* {el.dt_txt}
-                {el.dt_txt.split(/[- :]/)[0]}.{el.dt_txt.split(/[- :]/)[1]}.
-                {el.dt_txt.split(/[- :]/)[2]}, {el.dt_txt.split(/[- :]/)[3]}, */}
                       <S.TodayIconH2>{formatDate(el.dt_txt)}</S.TodayIconH2>
-                      {/* Max: {Math.round((el.main.temp_max - 273.15) * 10) / 10}°C Min:{" "}
-                {Math.round((el.main.temp_min - 273.15) * 10) / 10}°C */}
                       <div>
-                        {/* Weather: {el.weather[0].main} */}
                         <S.TodayIConImage
                           src={`/icons/${el.weather[0].main}.png`}
                         />
                       </div>
-                      {/* {weekday[new Date(el.dt_txt).getDay()]} */}
-                      {/* {monthNames[new Date(el.dt_txt).getMonth()]}
-                {getDayWithOrdinal(new Date(el.dt_txt).getDate())} */}
-                      {/* {formatDate()} */}
                     </S.TodayIcon>
                   ))}{" "}
                 </S.ForecastToday>
@@ -282,14 +234,10 @@ export default function WeatherApp() {
                   {new Array(5).fill(0).map((a, i) => (
                     <S.ForecastIconCon key={i}>
                       <S.ForecastIconP>
-                        {/* {weekday[
-                          new Date(result?.list?.[i * 8].dt_txt).getDay()
-                        ].slice(0, 3)} */}
                         {moment(result?.list?.[i * 8].dt_txt).format("ddd")}
                       </S.ForecastIconP>
 
                       <div>
-                        {/* Weather: {result?.list?.[i * 8].weather[0].main} */}
                         <S.ForecastIconImage
                           src={`/icons/${
                             result?.list?.[i * 8].weather[0].main
