@@ -17,13 +17,7 @@ Enhancing Proficiency in Promise Chaining and Open API integration, and utilizin
 + Styled Components
 
 -------
-+ **Challenges:**
 
-Resolving Callback Hell and crafting intuitive yet simple code
-
-+ **Solutions:**
-
-Leveraging Promises and introducing Async/Await patterns
 
 -------
 ### **Advanced Feature:** 
