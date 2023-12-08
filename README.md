@@ -28,3 +28,50 @@ Leveraging Promises and introducing Async/Await patterns
 -------
 ### **Advanced Feature:** 
 + 5-day Forecast
+![forecast](https://github.com/ParkAmber/frontend-portfolio-weather/blob/main/forecast.png)
+
+       useEffect(() => {
+          navigator.geolocation.getCurrentPosition((position) => {
+            const { latitude, longitude } = position.coords;
+            axios
+              .get(currentUrl)
+              .then((res) => {
+                setCurrentWeather(res.data);
+                if (!weatherMainList.includes(res.data?.weather[0]?.main)) {
+                  setWeather("Clear");
+                } else {
+                  setWeather(res.data?.weather[0]?.main);
+                }
+                return axios.get(forecastUrl);
+              })
+              .then((res) => {
+                setResult(res.data);
+              });
+          });
+        }, []);
+
+        const searchWeather = async () => {
+          if (locationInput === "") {
+            alert("please enter location");
+            return;
+          }
+          try {
+            const data = await axios({
+              method: "get",
+              url: url,
+            });
+            setResult(data.data);
+            setCurrentCity(data.data?.city?.name);
+            setCurrentCountry(data.data?.city?.country);
+      
+            const data2 = await axios.get(specificLocationUrl);
+            setCurrentWeather(data2.data);
+            if (!weatherMainList.includes(data2.data?.weather[0]?.main)) {
+              setWeather("Clear");
+            } else {
+              setWeather(data2.data?.weather[0]?.main);
+            }
+          } catch (err) {
+            alert(err);
+          }
+        };
