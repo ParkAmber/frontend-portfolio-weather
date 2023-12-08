@@ -1,38 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather Forecasting Application
++ Demo: https://amberpark.site/weather/
 
-## Getting Started
+  
+### **Overview:**
+The project encompasses a comprehensive weather forecasting application website designed to deliver crucial meteorological insights. Core functionalities include real-time data for the current date, present weather conditions, and a 5-day forecast, leveraging an Open API for accurate and up-to-date information. The platform intuitively presents the lowest and highest temperatures for the current day and forecasts for the next 5 days.
 
-First, run the development server:
+Additionally, users can input their desired location into an input box, prompting the system to dynamically display the current weather and extended forecasting details for the specified location. This approach enhances user experience by providing personalized and location-specific weather information. The application aims to offer a seamless and informative interface for users seeking reliable weather forecasts.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### **Development Goals:** 
+Enhancing Proficiency in Promise Chaining and Open API integration, and utilizing date lLibraries.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **Sills:** 
++ HTML
++ CSS
++ React.js
++ Styled Components
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+-------
++ **Challenges:**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Resolving Callback Hell and crafting intuitive yet simple code
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
++ **Solutions:**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Leveraging Promises and introducing Async/Await patterns
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-------
+### **Advanced Feature:** 
++ 5-day Forecast
