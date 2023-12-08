@@ -18,8 +18,6 @@ Enhancing Proficiency in Promise Chaining and Open API integration, and utilizin
 
 -------
 
-
--------
 ### **Advanced Feature:** 
 + 5-day Forecast
 ![forecast](https://github.com/ParkAmber/frontend-portfolio-weather/blob/main/forecast.png)
