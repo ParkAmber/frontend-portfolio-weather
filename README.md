@@ -30,6 +30,7 @@ Leveraging Promises and introducing Async/Await patterns
 + 5-day Forecast
 ![forecast](https://github.com/ParkAmber/frontend-portfolio-weather/blob/main/forecast.png)
 
+
        useEffect(() => {
           navigator.geolocation.getCurrentPosition((position) => {
             const { latitude, longitude } = position.coords;
